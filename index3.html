@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Lịch Sử Phật Giáo Trung Quốc - Tập 3 (Chuyên Đề & Mẹo Nhớ)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep-space: #050714;
+            --card-bg: rgba(18, 24, 48, 0.72);
+            --border-glow: rgba(255, 215, 0, 0.35);
+            --accent-gold: #ffd700;
+            --accent-cyan: #00f3ff;
+            --accent-purple: #9d4edd;
+            --accent-pink: #ff79c6;
+            --text-main: #e2e8f0;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-deep-space);
+            color: var(--text-main);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 121, 198, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 60%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"><g fill="%23FFF" opacity="0.3"><circle cx="150" cy="120" r="1.5"/><circle cx="380" cy="220" r="1"/><circle cx="620" cy="80" r="2"/><circle cx="240" cy="600" r="1.2"/><circle cx="550" cy="710" r="1.8"/><circle cx="750" cy="450" r="1.2"/><circle cx="100" cy="750" r="2"/></g></svg>') repeat;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #ffd700, #ff79c6, #00f3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.05rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .tab-btn {
+            background: rgba(30, 38, 70, 0.7);
+            border: 1px solid var(--border-glow);
+            color: var(--text-main);
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #4a154b, var(--accent-purple));
+            border-color: var(--accent-gold);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .card-title {
+            color: var(--accent-gold);
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .card-title::before {
+            content: '✦';
+            color: var(--accent-cyan);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 22px;
+        }
+
+        li::before {
+            content: '►';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-size: 0.75rem;
+            top: 4px;
+        }
+
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .badge {
+            background: rgba(0, 243, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-left: 6px;
+            display: inline-block;
+        }
+
+        .tip-box {
+            background: rgba(255, 215, 0, 0.08);
+            border-left: 4px solid var(--accent-gold);
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #ffeaa7;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(10, 15, 35, 0.65);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.93rem;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        th {
+            background: rgba(157, 78, 221, 0.35);
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .quiz-item {
+            background: rgba(15, 20, 45, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media (min-width: 600px) {
+            .quiz-options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .opt-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .opt-btn.correct {
+            background: rgba(46, 213, 115, 0.25) !important;
+            border-color: #2ed573 !important;
+            color: #2ed573;
+            font-weight: bold;
+        }
+
+        .opt-btn.wrong {
+            background: rgba(255, 71, 87, 0.25) !important;
+            border-color: #ff4757 !important;
+            color: #ff4757;
+        }
+
+        .quiz-explain {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(0, 243, 255, 0.08);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
+            display: none;
+            font-size: 0.92rem;
+            color: #d1d8e0;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1>✦ LỊCH SỬ PHẬT GIÁO TRUNG QUỐC - TẬP 3 ✦</h1>
+            <p>Chuyên Đề Sơ Đồ 5 Thời Kỳ, Dịch Thuật Bát-Nhã, Mẹo Nhớ Ôn Thi & Đề Chuyên Sâu</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="switchPage('p9')">Chuyên Đề 1: 5 Thời Kỳ & Lịch Sử Đối Chiếu</button>
+            <button class="tab-btn" onclick="switchPage('p10')">Chuyên Đề 2: Hệ Thống Dịch Kinh Bát-Nhã</button>
+            <button class="tab-btn" onclick="switchPage('p11')">Chuyên Đề 3: Thần Chú Mẹo Nhớ & Cột Mốc "ĐẦU TIÊN"</button>
+            <button class="tab-btn" onclick="switchPage('p12')">Chuyên Đề 4: Đề Thi Trắc Nghiệm Chuyên Sâu</button>
+        </nav>
+
+        <!-- CHUYÊN ĐỀ 1: 5 THỜI KỲ & LỊCH SỬ ĐỐI CHIẾU -->
+        <div id="p9" class="page-content active">
+            <div class="card">
+                <div class="card-title">Sơ Đồ 5 Thời Kỳ Phát Triển Của Phật Giáo Trung Quốc</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thời Kỳ</th>
+                                <th>Đặc Điểm & Nội Dung Cốt Lõi</th>
+                                <th>Triều Đại Trung Quốc</th>
+                                <th>Tương Ứng Lịch Sử Việt Nam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>1. PHIÊN DỊCH</b></td>
+                                <td>Du nhập từ Ấn Độ sang, chú trọng chuyển ngữ & dịch kinh điển Hán ngữ.</td>
+                                <td>Lưỡng Hán, Tam Quốc, Tây Tấn (206 TCN – 317 TL)</td>
+                                <td>Bắc thuộc: Khởi nghĩa Hai Bà Trưng (40), Khởi nghĩa Bà Triệu (248).</td>
+                            </tr>
+                            <tr>
+                                <td><b>2. NGHIÊN CỨU</b></td>
+                                <td>Có kinh điển thì tập trung học hỏi, nghiên cứu, chú giải nghĩa lý sâu sắc.</td>
+                                <td>Đông Tấn, Nam Bắc Triều (317 – 589)</td>
+                                <td>Lý Nam Đế lập nước Vạn Xuân (544).</td>
+                            </tr>
+                            <tr>
+                                <td><b>3. KIẾN THIẾT</b></td>
+                                <td>Xây dựng & phát triển Phật giáo Trung Quốc độc lập, đỉnh cao 13 Tông phái.</td>
+                                <td>Tùy, Đường (581 – 907)</td>
+                                <td>Bắc thuộc lần III → Khởi nghĩa Khúc Thừa Dụ, Ngô Quyền.</td>
+                            </tr>
+                            <tr>
+                                <td><b>4. KẾ THỪA</b></td>
+                                <td>Tiếp tục truyền thừa các dòng thiền & tông phái qua nhiều thế hệ.</td>
+                                <td>Ngũ Đại Thập Quốc, Tống, Nguyên, Minh, Thanh (907 – 1911)</td>
+                                <td>Các triều đại độc lập: Đinh, Tiền Lê, Lý, Trần, Hồ, Lê, Tây Sơn, Nguyễn.</td>
+                            </tr>
+                            <tr>
+                                <td><b>5. SUY VI</b></td>
+                                <td>Giai đoạn suy giảm tương đối, dẫn đến phong trào Chấn hưng Cận đại.</td>
+                                <td>Cận Đại (1840 / 1911 – 1949)</td>
+                                <td>Thời Pháp thuộc → Cách mạng Tháng Tám (1945).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Sự Phân Chia Các Triều Đại Trong Lịch Sử Trung Quốc</div>
+                <ul>
+                    <li><span class="highlight">Giai đoạn 1:</span> Lưỡng Hán (Tây Hán 206 TCN–9; Đông Hán 25–220) → Tam Quốc (Tào Ngụy 220–265, Thục Hán 221–263, Đông Ngô 222–280) → Lưỡng Tấn (Tây Tấn 265–316, Đông Tấn 317–420) → Nam Bắc Triều (420–589).</li>
+                    <li><span class="highlight">Giai đoạn 2:</span> Tùy (581–618) → Đường (618–907) → Ngũ Đại Thập Quốc (907–960) → Tống (960–1279) → Nguyên (1271–1368) → Minh (1368–1644) → Thanh (1644–1911) → Cận đại (1840–1949).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CHUYÊN ĐỀ 2: HỆ THỐNG DỊCH KINH BÁT-NHÃ & ĐỊNH BẢN -->
+        <div id="p10" class="page-content">
+            <div class="card">
+                <div class="card-title">1. Bảng Phân Biệt Các Bản Dịch Hệ Kinh Bát-Nhã</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên Bản Dịch Kinh Bát-Nhã</th>
+                                <th>Dịch Giả / Nhân Vật</th>
+                                <th>Thời Đại</th>
+                                <th>Tác Động Tư Tưởng Chính</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Đạo Hành Bát Nhã Kinh</b></td>
+                                <td>Chi Lâu Ca Sấm</td>
+                                <td>Đông Hán</td>
+                                <td>Khơi nguồn tư tưởng Huyền Học Thanh Đàm thời Đông Tấn.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Phóng Quang Bát Nhã Kinh</b></td>
+                                <td>Vô La Xoa & Trúc Thúc Lan (Chu Sĩ Hành thỉnh từ Vu Điền)</td>
+                                <td>Tây Tấn (291)</td>
+                                <td>Nền tảng phát triển Bát-nhã học thời Tây Tấn.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Quang Tán Bát Nhã Kinh</b></td>
+                                <td>Trúc Pháp Hộ (Chi Pháp Hộ)</td>
+                                <td>Tây Tấn</td>
+                                <td>Mở rộng kinh điển Đại thừa tại khu vực Đôn Hoàng.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Kinh Đại Bát Nhã</b></td>
+                                <td>Cưu Ma La Thập</td>
+                                <td>Hậu Tần / Đông Tấn</td>
+                                <td>Định bản hoàn chỉnh nhất, ảnh hưởng trực tiếp Thiền tông & Tam Luận tông.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">2. Số Lượng Bản Dịch Của Các Bộ Kinh Trọng Yếu</div>
+                <ul>
+                    <li><span class="highlight">Kinh Pháp Hoa:</span> Có tất cả <span class="badge">3 bản dịch</span> (Bản định dịch nổi tiếng nhất do Ngài Cưu Ma La Thập thực hiện).</li>
+                    <li><span class="highlight">Kinh Duy Ma:</span> Có tất cả <span class="badge">3 bản dịch</span> (Bản định dịch do Ngài Cưu Ma La Thập thực hiện).</li>
+                    <li><span class="highlight">Kinh Kim Cang:</span> Có tất cả <span class="badge">6 bản dịch</span> Hán văn.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">3. Tác Động Dịch Phẩm Của Cưu Ma La Thập Đến Các Tông Phái</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dịch Phẩm Của Cưu Ma La Thập</th>
+                                <th>Tông Phái Phật Giáo Ảnh Hưởng Direct</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Kinh Pháp Hoa</td><td><b>Thiên Thai Tông</b></td></tr>
+                            <tr><td>Kinh A Di Đà</td><td><b>Tịnh Độ Tông</b></td></tr>
+                            <tr><td>Kinh Kim Cang, Thiền Pháp Yếu Giải, Tọa Thiền Tam Muội Kinh</td><td><b>Thiền Tông</b></td></tr>
+                            <tr><td>Thập Trụ Tỳ Bà Sa Luận</td><td><b>Hoa Nghiêm Tông</b></td></tr>
+                            <tr><td>Thành Thực Luận</td><td><b>Thành Thực Tông</b></td></tr>
+                            <tr><td>Tứ Luận (Trung luận, Bách luận, Thập nhị môn luận, Đại trí độ luận)</td><td><b>Tam Luận Tông</b></td></tr>
+                            <tr><td>Thập Tụng Luật</td><td><b>Luật Tông</b></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHUYÊN ĐỀ 3: THẦN CHÚ MẸO NHỚ & CỘT MỐC "ĐẦU TIÊN" -->
+        <div id="p11" class="page-content">
+            <div class="card">
+                <div class="card-title">1. Tổng Hợp Các Cột Mốc "ĐẦU TIÊN" Quan Trọng</div>
+                <ul>
+                    <li><span class="highlight">Ngôi Chùa Đầu Tiên tại Trung Quốc:</span> <span class="badge">Chùa Bạch Mã</span> (Lạc Dương, xây thời Hán Minh Đế năm 67 TL).</li>
+                    <li><span class="highlight">Văn Bản Kinh Dịch Đầu Tiên:</span> <span class="badge">Kinh Tứ Thập Nhị Chương</span> (do Ca Diếp Ma Đằng & Trúc Pháp Lan dịch).</li>
+                    <li><span class="highlight">Quyển Kinh Dịch Bằng Khẩu Truyền Đầu Tiên:</span> <span class="badge">Kinh Phù Đồ</span> (Y Tồn truyền cho Cảnh Lô năm 2 TCN).</li>
+                    <li><span class="highlight">Bộ Luận Phật Giáo Đầu Tiên Bằng Tiếng Hán:</span> <span class="badge">Lý Hoặc Luận</span> (do cư sĩ Mâu Tử sáng tác thời Đông Hán).</li>
+                    <li><span class="highlight">Người Trung Quốc Đầu Tiên Xuất Gia:</span> <span class="badge">Nghiêm Phật Điều</span> (đệ tử An Thế Cao, chưa thọ giới).</li>
+                    <li><span class="highlight">Người Hán Đầu Tiên Thọ Giới Tỳ-Kheo:</span> <span class="badge">Chu Sĩ Hành</span> (thời Tào Ngụy).</li>
+                    <li><span class="highlight">Người Đầu Tiên Tây Hành Cầu Pháp:</span> <span class="badge">Chu Sĩ Hành</span> (sang Vu Điền năm 260).</li>
+                    <li><span class="highlight">Giới Đàn Đầu Tiên Tại Lạc Dương:</span> Do <span class="badge">Đàm Ma Ca La</span> thiết lập thời Tào Ngụy.</li>
+                    <li><span class="highlight">Ngôi Chùa Đầu Tiên Ở Giang Nam / Nước Ngô:</span> <span class="badge">Chùa Kiến Sơ</span> (xây cho Ngài Khương Tăng Hội năm 247).</li>
+                    <li><span class="highlight">Người Từ Việt Nam Đầu Tiên Truyền Phật Giáo Sang TQ:</span> <span class="badge">Khương Tăng Hội</span> (sanh quán tại Giao Châu).</li>
+                    <li><span class="highlight">Danh Mục Kinh Điển Hán Ngữ Đầu Tiên:</span> <span class="badge">Tổng Lý Chúng Kinh Mục Lục (An Lục)</span> do Đạo An soạn.</li>
+                    <li><span class="highlight">Vị Tỳ-Kheo-Ni Đầu Tiên Của Trung Quốc:</span> <span class="badge">Ni Sư Tịnh Kiểm</span> (thời Đông Tấn).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">2. Thần Chú & Mẹo Nhớ Siêu Tốc Thuộc Lòng</div>
+                <div class="tip-box">
+                    <b>💡 Mẹo Nhớ 1 (Hán Vương vs Sở Vương):</b><br>
+                    Thời Hán → Lưu Anh bị gọi nhầm là Hán Vương → Ông liền sửa lại: <i>“Ta là Sở Vương!”</i> → Bên cạnh có người <i>“Trách rồi Dung”</i> (Trách Dung) → Cả hai cùng quy hướng hướng Phật!
+                </div>
+                <div class="tip-box">
+                    <b>💡 Mẹo Nhớ 2 (An Thế Cao & An Ban Thủ Ý):</b><br>
+                    An Thế Cao = An Tức. Ngồi thiền tu An Ban (hơi thở) → Hiểu Tứ Đế → Đi Bát Chánh Đạo → Học Bát Đại Nhân Giác.<br>
+                    Muốn tu An Ban Thủ Ý thì học <i>Thai Tức</i> (Đạo giáo), rồi Đại sư <i>Trí Giả</i> mở ra 6 cánh cửa = <i>Lục Diệu Pháp Môn</i>!
+                </div>
+                <div class="tip-box">
+                    <b>💡 Mẹo Nhớ 3 (Nhóm Tam Chi thời Đông Ngô):</b><br>
+                    Thần chú: <i>“Sấm vang – Lượng đếm – nên Khiêm nhường”</i> (Chi Lâu Ca Sấm → Chi Lượng → Chi Khiêm).
+                </div>
+                <div class="tip-box">
+                    <b>💡 Mẹo Nhớ 4 (Cư Sĩ Chi Khiêm Dịch Kinh):</b><br>
+                    Chi Khiêm mang quà <i>ĐẠI MINH ĐỘ</i>, gặp ông <i>DUY MA CẬT</i> hỏi thăm, rồi ghé chợ mua <i>BỘT KINH</i> về làm bánh cho các <i>HIỀN NHÂN</i>!
+                </div>
+            </div>
+        </div>
+
+        <!-- CHUYÊN ĐỀ 4: ĐỀ THI TRẮC NGHIỆM CHUYÊN SÂU -->
+        <div id="p12" class="page-content">
+            <div class="card">
+                <div class="card-title">Bộ 20 Câu Trắc Nghiệm Chuyên Sâu Tích Hợp Giải Thích Chi Tiết</div>
+                <p style="margin-bottom: 20px; color: var(--text-sub);">Hãy nhấp chọn đáp án để kiểm tra kiến thức chuyên sâu và xem phần giải thích ngay bên dưới!</p>
+
+                <div id="quiz-container-3"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Space Study Companion - Hệ Thống Ôn Tập Tri Thức Lịch Sử Phật Giáo Trung Quốc</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        const quizData3 = [
+            { id: 1, q: "Câu 1. Thuyết du nhập Phật giáo vào Trung Quốc có liên quan đến Nho giáo là thuyết nào?", opts: ["A. Thuyết Tây phương Thánh giả của Khổng Tử", "B. Thuyết Khẩu truyền Phật giáo của Y Tồn", "C. Thuyết Hán Minh Đế mộng kim nhân", "D. Thuyết Mâu Tử Lý Hoặc Luận"], ans: 0, exp: "Thuyết có liên quan đến Nho giáo trong số 12 thuyết du nhập chính là Thuyết 'Tây phương Thánh giả của Khổng Tử'." },
+            { id: 2, q: "Câu 2. Lễ kỷ niệm 2000 năm Phật giáo truyền vào Trung Quốc được tổ chức vào năm nào?", opts: ["A. 1990", "B. 1998", "C. 2000", "D. 2002"], ans: 1, exp: "Mốc năm 2 TCN (Y Tồn truyền Kinh Phù Đồ) được chọn để tổ chức đại lễ kỷ niệm 2000 năm Phật giáo TQ vào năm 1998." },
+            { id: 3, q: "Câu 3. Hai cao tăng Ca Diếp Ma Đằng và Trúc Pháp Lan ban đầu trú tại đâu trước khi Chùa Bạch Mã được xây dựng?", opts: ["A. Bạch Mã Tự", "B. Hồng Lô Tự", "C. Kiến Sơ Tự", "D. Trúc Lâm Tự"], ans: 1, exp: "Khi mới đến Lạc Dương thời Hán Minh Đế, hai ngài được thỉnh trú tại Hồng Lô Tự, sau mới chuyển về Chùa Bạch Mã." },
+            { id: 4, q: "Câu 4. 'Duy tuệ thị nghiệp' là câu khẩu hiệu nổi tiếng có xuất xứ từ bản dịch kinh nào?", opts: ["A. Kinh Tứ Đế", "B. Kinh Bát Đại Nhân Giác", "C. Kinh An Ban Thủ Ý", "D. Kinh Bát Chánh Đạo"], ans: 1, exp: "Câu 'Duy tuệ thị nghiệp' xuất phát từ Kinh Bát Đại Nhân Giác do Ngài An Thế Cao dịch." },
+            { id: 5, q: "Câu 5. Ngài An Thế Cao đại diện cho trường phái Phật giáo nào khi sang Trung Quốc?", opts: ["A. Phật giáo Phát triển (Đại thừa)", "B. Phật giáo Nguyên thủy (Thiền quán)", "C. Mật giáo", "D. Duy Thức tông"], ans: 1, exp: "Ngài An Thế Cao dịch dòng kinh Nguyên thủy, nổi tiếng với việc đem Thiền quán (An Ban Thủ Ý) vào TQ." },
+            { id: 6, q: "Câu 6. Bản dịch 'Đạo Hành Bát Nhã Kinh' của Ngài Chi Lâu Ca Sấm đã khơi nguồn cho trào lưu tư tưởng nào?", opts: ["A. Thai Tức pháp môn", "B. Huyền Học Thanh Đàm", "C. Lục Diệu Pháp Môn", "D. Tam Giáo Đồng Nguyên"], ans: 1, exp: "Kinh Đạo Hành Bát Nhã đã ảnh hưởng sâu sắc đến giới sĩ đại phu, tạo tiền đề cho phong khí Huyền Học Thanh Đàm thời Đông Tấn." },
+            { id: 7, q: "Câu 7. Vị Tăng sĩ thỉnh được bộ Phóng Quang Bát Nhã từ Vu Điền đem về Lạc Dương là đệ tử của ai?", opts: ["A. Chu Sĩ Hành (đệ tử Phất Như Đàn)", "B. Chu Sĩ Hành (sai đệ tử Phất Như Đàn mang về)", "C. An Thế Cao", "D. Đàm Ma Ca La"], ans: 1, exp: "Ngài Chu Sĩ Hành tự mình đi Vu Điền năm 260 thỉnh kinh Phóng Quang Bát Nhã, sau do tuổi già nên trao đệ tử Phất Như Đàn mang về." },
+            { id: 8, q: "Câu 8. Cư sĩ Chi Khiêm thời Đông Ngô được vua Tôn Quyền giao nhiệm vụ gì?", opts: ["A. Xây dựng Chùa Kiến Sơ", "B. Dạy Thái tử Tôn Lượng", "C. Biên soạn An Lục", "D. Sang Tây Vực thỉnh kinh"], ans: 1, exp: "Chi Khiêm là vị cư sĩ tài bác, được Tôn Quyền trọng đãi tôn làm bác sỹ và giao dạy Thái tử Tôn Lượng." },
+            { id: 9, q: "Câu 9. Ngài Khương Tăng Hội đã viết phần Đề tựa và Chú sớ cho bộ kinh nào?", opts: ["A. Kinh Duy Ma Cật", "B. Kinh An Ban Thủ Ý", "C. Lục Độ Tập Kinh", "D. Kinh Hiền Nhân"], ans: 1, exp: "Ngài Khương Tăng Hội ngoài việc dịch Lục Độ Tập Kinh còn viết đề tựa và chú sớ cho Kinh An Ban Thủ Ý." },
+            { id: 10, q: "Câu 10. Danh xưng 'Đôn Hoàng Bồ Tát' được tôn xưng cho vị Cao Tăng nào?", opts: ["A. Trúc Pháp Hộ", "B. Phật Đồ Trừng", "C. Đạo An", "D. Cưu Ma La Thập"], ans: 0, exp: "Ngài Trúc Pháp Hộ (Chi Pháp Hộ) dịch kinh tại Đôn Hoàng nên được người đời tôn xưng là 'Đôn Hoàng Bồ Tát'." },
+            { id: 11, q: "Câu 11. Cuộc gặp gỡ tư tưởng thời Ngụy - Tấn đã áp dụng phương pháp nào để giải thích giáo lý Phật giáo?", opts: ["A. Đốn ngộ", "B. Cách nghĩa", "C. Khẩu truyền", "D. Lục quán"], ans: 1, exp: "Phương pháp 'Cách nghĩa' dùng khái niệm Lão-Trang để giải thích thuật ngữ Bát-nhã cho giới trí thức TQ." },
+            { id: 12, q: "Câu 12. Tác phẩm 'Lão Tử Hóa Hồ Kinh' của Vương Phù được viết ra nhằm mục đích gì?", opts: ["A. Hộ trì Phật pháp", "B. Tuyên truyền Nho giáo", "C. Đối kháng với Phật giáo", "D. Giải thích Bát nhã"], ans: 2, exp: "Vương Phù soạn Lão Tử Hóa Hồ Kinh nhằm mục đích đối kháng với sự phát triển của Phật giáo." },
+            { id: 13, q: "Câu 13. Tác phẩm 'Tổng Lý Chúng Kinh Mục Lục' của Ngài Đạo An còn có tên gọi ngắn gọn là:", opts: ["A. Đạo Lục", "B. An Lục", "C. Tấn Lục", "D. Kinh Lục"], ans: 1, exp: "Tổng Lý Chúng Kinh Mục Lục ra đời thời Đông Tấn, thường được gọi tắt là 'An Lục'." },
+            { id: 14, q: "Câu 14. Tư tưởng nổi tiếng 'Nhất xiển đề cũng có thể thành Phật' do vị Cao Tăng nào xướng xuất?", opts: ["A. Tăng Triệu", "B. Đạo Sanh", "C. Huệ Viễn", "D. Đàm Vô Sấm"], ans: 1, exp: "Ngài Đạo Sanh (đệ tử Cưu Ma La Thập) là người đầu tiên đưa ra tư tưởng táo bạo 'Nhất xiển đề cũng có thể thành Phật'." },
+            { id: 15, q: "Câu 15. Cao tăng Tăng Triệu (đệ tử Cưu Ma La Thập) được xưng tụng danh hiệu gì?", opts: ["A. Giải Không đệ nhất", "B. Đôn Hoàng Bồ Tát", "C. Quốc chi đại bảo", "D. Tể tướng áo đen"], ans: 0, exp: "Ngài Tăng Triệu nổi tiếng cực kỳ thông đạt giáo lý Bát Nhã tánh Không, nên được xưng tụng là 'Giải Không đệ nhất'." },
+            { id: 16, q: "Câu 16. Ni sư Tịnh Kiểm – vị Tỳ kheo ni đầu tiên của Trung Quốc – ban đầu y chỉ ai để thọ 10 giới?", opts: ["A. Ngài Trí Sơn", "B. Ngài Đàm Ma Kiệt Đa", "C. Ngài Đạo An", "D. Ngài Huệ Viễn"], ans: 0, exp: "Ni sư Tịnh Kiểm ban đầu y chỉ Ngài Trí Sơn để thọ 10 giới Sa-di-ni." },
+            { id: 17, q: "Câu 17. Giới đàn Tỳ-kheo-ni đặc biệt thời Đông Tấn do Ngài Đàm Ma Kiệt Đa kiến lập ở đâu?", opts: ["A. Trên đỉnh Lô Sơn", "B. Trên thuyền trên dòng sông Tứ", "C. Tại Bạch Mã Tự", "D. Tại Hồng Lô Tự"], ans: 1, exp: "Ngài Đàm Ma Kiệt Đa đã kiến lập giới đàn Tỳ kheo ni truyền Cụ túc giới trên thuyền trên dòng sông Tứ." },
+            { id: 18, q: "Câu 18. Tác phẩm 'Sa môn bất bái vương giả luận' do vị Tổ nào sáng tác?", opts: ["A. Ngài Đạo An", "B. Ngài Huệ Viễn", "C. Ngài Tăng Triệu", "D. Ngài Bồ Đề Đạt Ma"], ans: 1, exp: "Sơ Tổ Tịnh Độ Tông Huệ Viễn là tác giả của tác phẩm nổi tiếng 'Sa môn bất bái vương giả luận'." },
+            { id: 19, q: "Câu 19. Bộ kinh 'Đại Bát Niết Bàn' do Cao Tăng nào phiên dịch tại nước Bắc Lương?", opts: ["A. Đàm Vô Sấm", "B. Giác Hiền", "C. Chân Đế", "D. Bồ Đề Lưu Chi"], ans: 0, exp: "Ngài Đàm Vô Sấm là dịch giả bộ kinh Đại Bát Niết Bàn tại Bắc Lương, khai sáng tư tưởng Phật tánh." },
+            { id: 20, q: "Câu 20. Tác phẩm 'Lương Hoàng Bảo Sám' do ai biên soạn theo lời thỉnh cầu của Lương Vũ Đế?", opts: ["A. Ngài Tuệ Lâm", "B. Ngài Chí Công", "C. Ngài Bồ Đề Đạt Ma", "D. Ngài Pháp Quả"], ans: 1, exp: "Lương Vũ Đế đã thỉnh Ngài Chí Công biên soạn bộ Lương Hoàng Bảo Sám." }
+        ];
+
+        function renderQuiz3() {
+            const container = document.getElementById('quiz-container-3');
+            container.innerHTML = '';
+
+            quizData3.forEach((item, idx) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'quiz-item';
+                
+                let optsHtml = '';
+                item.opts.forEach((opt, oIdx) => {
+                    optsHtml += `<button class="opt-btn" onclick="checkAnswer3(${idx}, ${oIdx}, this)">${opt}</button>`;
+                });
+
+                qDiv.innerHTML = `
+                    <div class="quiz-question">${item.q}</div>
+                    <div class="quiz-options">${optsHtml}</div>
+                    <div class="quiz-explain" id="exp3-${idx}"><b>Đáp án đúng:</b> ${item.opts[item.ans]}<br><b>Giải thích:</b> ${item.exp}</div>
+                `;
+                container.appendChild(qDiv);
+            });
+        }
+
+        function checkAnswer3(qIdx, optIdx, btn) {
+            const item = quizData3[qIdx];
+            const parent = btn.parentElement;
+            const allBtns = parent.querySelectorAll('.opt-btn');
+            
+            allBtns.forEach(b => b.disabled = true);
+
+            if (optIdx === item.ans) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+                allBtns[item.ans].classList.add('correct');
+            }
+
+            document.getElementById(`exp3-${qIdx}`).style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', renderQuiz3);
+    </script>
+</body>
+</html>

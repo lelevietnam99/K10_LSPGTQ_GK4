@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng Vũ Trụ - Tổng Hợp Trọn Bộ Ôn Tập Lịch Sử Phật Giáo Trung Quốc (Tập 1 - 10)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep-space: #020308;
+            --card-bg: rgba(13, 18, 40, 0.78);
+            --border-glow: rgba(0, 243, 255, 0.35);
+            --accent-gold: #ffd700;
+            --accent-cyan: #00f3ff;
+            --accent-purple: #9d4edd;
+            --accent-pink: #ff79c6;
+            --accent-green: #2ed573;
+            --text-main: #e2e8f0;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-deep-space);
+            color: var(--text-main);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(0, 243, 255, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(157, 78, 221, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.06) 0%, transparent 65%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Hiệu ứng bầu trời sao vũ trụ */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"><g fill="%23FFF" opacity="0.32"><circle cx="120" cy="140" r="1.5"/><circle cx="340" cy="210" r="1"/><circle cx="670" cy="100" r="2.2"/><circle cx="210" cy="640" r="1.2"/><circle cx="520" cy="730" r="1.8"/><circle cx="750" cy="420" r="1.2"/><circle cx="140" cy="710" r="2"/></g></svg>') repeat;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 45px 20px 25px;
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            background: linear-gradient(135deg, #ffd700, #00f3ff, #ff79c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Dashboard Thống kê */
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(18, 25, 55, 0.75);
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* Thanh tìm kiếm & Lọc */
+        .search-bar-container {
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 22px;
+            border-radius: 30px;
+            border: 1px solid var(--accent-cyan);
+            background: rgba(10, 15, 35, 0.85);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1.05rem;
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 22px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Grid các Tập học tập */
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .episodes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .episode-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 18px;
+            padding: 24px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 35px rgba(0, 243, 255, 0.3);
+        }
+
+        .episode-card.completed {
+            border-color: var(--accent-green);
+        }
+
+        .episode-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .ep-number {
+            background: linear-gradient(135deg, var(--accent-purple), #4a154b);
+            color: #fff;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-pink);
+        }
+
+        .check-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .check-toggle input {
+            accent-color: var(--accent-green);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .ep-title {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .ep-description {
+            color: var(--text-main);
+            font-size: 0.94rem;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .ep-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            color: var(--accent-cyan);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+        }
+
+        .ep-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-open {
+            flex: 1;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #000;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+        }
+
+        .btn-open:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+            color: #fff;
+        }
+
+        .btn-newtab {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-newtab:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.88rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1>✦ CỔNG THÔNG TÍN VŨ TRỤ - HỆ THỐNG ÔN TẬP ✦</h1>
+            <p>Trọn Bộ 10 Tập Tri Thức & Đề Thi Mô Phỏng Môn Lịch Sử Phật Giáo Trung Quốc</p>
+        </header>
+
+        <!-- Thống kê tổng quan -->
+        <div class="stats-dashboard">
+            <div class="stat-card">
+                <div class="stat-value">10 Tập</div>
+                <div class="stat-label">Học Phần Chuyên Sâu</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">385+ Câu</div>
+                <div class="stat-label">Trắc Nghiệm Phản Xạ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">13 Phái</div>
+                <div class="stat-label">Tông Phái Phật Giáo TQ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="progress-val">0/10</div>
+                <div class="stat-label">Tiến Độ Hoàn Thành</div>
+            </div>
+        </div>
+
+        <!-- Thanh tìm kiếm nhanh -->
+        <div class="search-bar-container">
+            <input type="text" id="searchInput" class="search-input" onkeyup="filterEpisodes()" placeholder="🔍 Tìm nhanh chủ đề, nhân vật hoặc nội dung (Ví dụ: Huệ Năng, Bạch Mã, Mindmap, Flashcard,...)...">
+        </div>
+
+        <!-- Danh sách 10 Tập -->
+        <div class="episodes-grid" id="episodesGrid">
+
+            <!-- TẬP 1 -->
+            <div class="episode-card" id="card-1">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 01</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(1, this.checked)" id="check-1"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Khởi Nguồn & Thời Lưỡng Hán</div>
+                    <div class="ep-description">
+                        • Sứ giả Y Tồn khẩu truyền Kinh Phù Đồ (2 TCN).<br>
+                        • Hán Minh Đế mộng kim nhân & Chùa Bạch Mã (67 TL).<br>
+                        • Hai trụ cột Hậu Hán: An Thế Cao & Chi Lâu Ca Sấm.<br>
+                        • Tác phẩm Lý Hoặc Luận của cư sĩ Mâu Tử.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index1.html</span>
+                        <span class="tag">Khẩu truyền</span>
+                        <span class="tag">Kinh 42 Chương</span>
+                        <span class="tag">Đề Đắc Thụ</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index1.html" class="btn-open">MỞ TẬP 1</a>
+                    <a href="index1.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 2 -->
+            <div class="episode-card" id="card-2">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 02</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(2, this.checked)" id="check-2"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Tùy Đường Đến Cận Đại & 13 Tông Phái</div>
+                    <div class="ep-description">
+                        • Thời đại Kiến thiết hoàng kim Tùy - Đường.<br>
+                        • Sự hình thành và giáo lý 13 Tông phái Phật giáo.<br>
+                        • Phong trào Chấn hưng Phật giáo & Phật Giáo Nhân Gian.<br>
+                        • Bảng Tra Cứu Nhân Vật Live Search Toàn Tập.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index2.html</span>
+                        <span class="tag">Huyền Tráng</span>
+                        <span class="tag">Lục Tổ Huệ Năng</span>
+                        <span class="tag">Live Search</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index2.html" class="btn-open">MỞ TẬP 2</a>
+                    <a href="index2.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 3 -->
+            <div class="episode-card" id="card-3">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 03</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(3, this.checked)" id="check-3"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Chuyên Đề 5 Thời Kỳ & Thần Chú Mẹo Nhớ</div>
+                    <div class="ep-description">
+                        • Sơ đồ 5 Thời kỳ & Tương quan lịch sử Việt - Trung.<br>
+                        • Bảng hệ thống hóa 4 bản dịch Kinh Bát Nhã lớn.<br>
+                        • Thần chú & Mẹo nhớ nhanh các cột mốc "ĐẦU TIÊN".<br>
+                        • Đề trắc nghiệm chuyên sâu 20 câu có giải thích.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index3.html</span>
+                        <span class="tag">5 Thời Kỳ</span>
+                        <span class="tag">Mẹo Ôn Thi</span>
+                        <span class="tag">Kinh Bát Nhã</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index3.html" class="btn-open">MỞ TẬP 3</a>
+                    <a href="index3.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 4 -->
+            <div class="episode-card" id="card-4">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 04</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(4, this.checked)" id="check-4"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Flashcards Vũ Trụ & Đề Giữa Kỳ Mô Phỏng</div>
+                    <div class="ep-description">
+                        • Bộ thẻ Flashcards lật mặt tương tác 12 chủ đề.<br>
+                        • So sánh Tứ Đại Dịch Giả & 4 Cuộc Pháp Nạn Tam Vũ Nhất Tông.<br>
+                        • Đề thi thử Giữa kỳ mô phỏng 25 câu.<br>
+                        • Bảng tính điểm % số câu đúng tự động.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index4.html</span>
+                        <span class="tag">Flashcard Lật Mặt</span>
+                        <span class="tag">Tam Vũ Nhất Tông</span>
+                        <span class="tag">Thi Giữa Kỳ</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index4.html" class="btn-open">MỞ TẬP 4</a>
+                    <a href="index4.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 5 -->
+            <div class="episode-card" id="card-5">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 05</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(5, this.checked)" id="check-5"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Mindmap Tree, Timeline & Đề Cuối Kỳ</div>
+                    <div class="ep-description">
+                        • Sơ đồ tư duy Mindmap dạng cây có thể thu gọn/mở rộng.<br>
+                        • Dòng thời gian Space Timeline chuẩn xác từ 2 TCN - Cận đại.<br>
+                        • Đề thi thử Cuối kỳ 30 câu tích hợp Đồng hồ 30 phút.<br>
+                        • Đánh giá xếp loại trình độ kiến thức.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index5.html</span>
+                        <span class="tag">Mindmap Cây</span>
+                        <span class="tag">Space Timeline</span>
+                        <span class="tag">Đồng Hồ 30 Phút</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index5.html" class="btn-open">MỞ TẬP 5</a>
+                    <a href="index5.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 6 -->
+            <div class="episode-card" id="card-6">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 06</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(6, this.checked)" id="check-6"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Ma Trận Fast Memory & Đề Phản Xạ 35 Câu</div>
+                    <div class="ep-description">
+                        • Bảng Ma trận Ghi nhớ Tốc độ (Fast Memory Matrix).<br>
+                        • Phân tích hệ thống 12 Thuyết du nhập Phật giáo.<br>
+                        • Ngân hàng 35 câu trắc nghiệm phản xạ nhanh.<br>
+                        • Tích hợp Bộ lọc đề thi riêng theo từng triều đại.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index6.html</span>
+                        <span class="tag">Fast Matrix</span>
+                        <span class="tag">12 Thuyết Du Nhập</span>
+                        <span class="tag">Lọc Triều Đại</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index6.html" class="btn-open">MỞ TẬP 6</a>
+                    <a href="index6.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 7 -->
+            <div class="episode-card" id="card-7">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 07</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(7, this.checked)" id="check-7"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Game Ghép Thẻ & Phân Tích Kinh Luận</div>
+                    <div class="ep-description">
+                        • Mini-game tương tác ghép thẻ Nối Cao Tăng - Sự Kiện.<br>
+                        • Chuyên đề phân tích 14 Tác phẩm Kinh Luận trọng yếu.<br>
+                        • Bộ đề tổng ôn toàn chương trình 40 câu trắc nghiệm.<br>
+                        • Bảng theo dõi tiến độ và chấm điểm tức thì.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index7.html</span>
+                        <span class="tag">Game Ghép Thẻ</span>
+                        <span class="tag">14 Kinh Luận</span>
+                        <span class="tag">Tổng Ôn 40 Câu</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index7.html" class="btn-open">MỞ TẬP 7</a>
+                    <a href="index7.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 8 -->
+            <div class="episode-card" id="card-8">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 08</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(8, this.checked)" id="check-8"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Chuyên Đề 5 Tông Phái & Speed Run 10s</div>
+                    <div class="ep-description">
+                        • So sánh đa chiều 5 Tông phái Phật giáo cốt lõi TQ.<br>
+                        • Phân tích Tam kinh nhất luận ➔ Ngũ kinh nhất luận.<br>
+                        • Thử thách Chế độ ôn tốc độ Speed Run (10 Giây/Câu).<br>
+                        • Bộ đề chẩn đoán nâng cấp toàn diện 50 câu.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index8.html</span>
+                        <span class="tag">5 Tông Phái</span>
+                        <span class="tag">Speed Run 10s</span>
+                        <span class="tag">Đề Nâng Cấp 50 Câus</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index8.html" class="btn-open">MỞ TẬP 8</a>
+                    <a href="index8.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 9 -->
+            <div class="episode-card" id="card-9">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 09</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(9, this.checked)" id="check-9"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Trung Tâm Phật Giáo & Đề Nâng Cao 60 Câu</div>
+                    <div class="ep-description">
+                        • Hệ thống các Danh sơn & Trung tâm Phật giáo lịch sử.<br>
+                        • Bảng tra nghĩa Danh xưng, Thuật ngữ & Tuyên ngôn triết lý.<br>
+                        • Bộ đề tổng ôn nâng cao 60 câu trắc nghiệm phủ rộng.<br>
+                        • Tự động tính tỷ lệ điểm phần trăm chính xác.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index9.html</span>
+                        <span class="tag">Lạc Dương / Kiến Nghiệp</span>
+                        <span class="tag">Tuyên Ngôn Triết Lý</span>
+                        <span class="tag">Đề 60 Câu</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index9.html" class="btn-open">MỞ TẬP 9</a>
+                    <a href="index9.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+            <!-- TẬP 10 -->
+            <div class="episode-card" id="card-10">
+                <div>
+                    <div class="episode-badge-row">
+                        <span class="ep-number">TẬP 10</span>
+                        <label class="check-toggle">
+                            <input type="checkbox" onchange="toggleComplete(10, this.checked)" id="check-10"> Đã học
+                        </label>
+                    </div>
+                    <div class="ep-title">Phân Tích Bẫy Thi & Đề Chuẩn Quốc Gia 70 Câu</div>
+                    <div class="ep-description">
+                        • Phân tích chi tiết 5 Bẫy trắc nghiệm thường gặp nhất.<br>
+                        • Bảng tổng kết hệ thống tri thức toàn tập (2 TCN - 1949).<br>
+                        • Bộ đề thi chuẩn quốc gia 70 câu phủ kín 100% giáo trình.<br>
+                        • Bảng xếp loại năng lực thi Giữa kỳ & Cuối kỳ.
+                    </div>
+                    <div class="ep-tags">
+                        <span class="tag">index10.html</span>
+                        <span class="tag">Phân Tích Bẫy Thi</span>
+                        <span class="tag">Tổng Kết Toàn Tập</span>
+                        <span class="tag">Đề Chuẩn Quốc Gia 70 Câu</span>
+                    </div>
+                </div>
+                <div class="ep-actions">
+                    <a href="index10.html" class="btn-open">MỞ TẬP 10</a>
+                    <a href="index10.html" target="_blank" class="btn-newtab" title="Mở trong thẻ mới">↗</a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>© 2026 Space Study Companion - Trang Tổng Hợp Trọn Bộ Lịch Sử Phật Giáo Trung Quốc</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tải trạng thái các tập đã học từ localStorage
+        function loadProgress() {
+            let completedCount = 0;
+            for (let i = 1; i <= 10; i++) {
+                const isChecked = localStorage.getItem(`ep_completed_${i}`) === 'true';
+                const checkbox = document.getElementById(`check-${i}`);
+                const card = document.getElementById(`card-${i}`);
+                
+                if (checkbox) checkbox.checked = isChecked;
+                if (isChecked) {
+                    completedCount++;
+                    if (card) card.classList.add('completed');
+                }
+            }
+            document.getElementById('progress-val').innerText = `${completedCount}/10`;
+        }
+
+        // Chuyển đổi trạng thái đã học
+        function toggleComplete(epNum, isChecked) {
+            localStorage.setItem(`ep_completed_${epNum}`, isChecked);
+            const card = document.getElementById(`card-${epNum}`);
+            if (card) {
+                if (isChecked) {
+                    card.classList.add('completed');
+                } else {
+                    card.classList.remove('completed');
+                }
+            }
+            loadProgress();
+        }
+
+        // Lọc tìm kiếm nhanh
+        function filterEpisodes() {
+            let input = document.getElementById("searchInput").value.toUpperCase();
+            let cards = document.getElementsByClassName("episode-card");
+
+            for (let i = 0; i < cards.length; i++) {
+                let cardText = cards[i].textContent || cards[i].innerText;
+                if (cardText.toUpperCase().indexOf(input) > -1) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
